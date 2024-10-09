@@ -13,10 +13,32 @@ router.post(
   requestValidation(postValidation.createPostValidationSchema),
   postController.createPost
 );
-router.get(
-  "/all-post",
-  auth(USER_ROLE.USER),
-  postController.getAllPost
+router.put(
+  "/upvote/:id",
+
+  postController.upvotePost
 );
+router.put(
+  "/downvote/:id",
+
+  postController.downVotePost
+);
+router.get(
+  "/single-post/:id",
+  auth(USER_ROLE.USER),
+  postController.getSinglePost
+);
+router.put(
+  "/updata-post/:id",
+  auth(USER_ROLE.USER),
+  postController.updataPost
+);
+router.delete(
+  "/delete-post/:id",
+  auth(USER_ROLE.USER),
+  postController.deletePost
+);
+router.get("/all-post", auth(USER_ROLE.USER), postController.getAllPost);
+router.get("/my-post", auth(USER_ROLE.USER), postController.myPost);
 
 export const postRouts = router;

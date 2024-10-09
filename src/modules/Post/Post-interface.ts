@@ -5,8 +5,10 @@ export type TPost = {
   user: ObjectId;
   category: string;
   title: string;
-  description: string; upvoteCount?: number;
-  downvoteCount?: number;
+  description: string; 
+  upvote?: number;
+  downvote?: number;
+  totalVote? : number;
   images?: string[];
   comments?: string[];
   status: keyof typeof ITEM_STATUS;

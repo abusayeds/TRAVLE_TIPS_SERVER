@@ -13,9 +13,43 @@ const createPost = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const upvotePost = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await postService.upvotePostDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " vote done  ! ",
+    data: result,
+  });
+});
+const downVotePost = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await postService.downVotePostDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " down vote done  ! ",
+    data: result,
+  });
+});
+
+const getSinglePost = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await postService.getSinglePostDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Find single post successfully  ! ",
+    data: result,
+  });
+});
 
 const getAllPost = catchAsync(async (req, res) => {
-  const result = await postService.getAllPostDB();
+  const result = await postService.getAllPostDB(req.query);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -24,7 +58,46 @@ const getAllPost = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const myPost = catchAsync(async (req, res) => {
+  const result = await postService.myPostDB(req.user.id, req.query);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Get My Post successfully ! ",
+    data: result,
+  });
+});
+const updataPost = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await postService.updataPostDB(id, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "  Post updata successfully ! ",
+    data: result,
+  });
+});
+const deletePost = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await postService.deletePostDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Delete successfully ! ",
+    data: result,
+  });
+});
+
 export const postController = {
   createPost,
-  getAllPost
+  getAllPost,
+  myPost,
+  upvotePost,
+  downVotePost,
+  getSinglePost,
+  updataPost,
+  deletePost,
 };

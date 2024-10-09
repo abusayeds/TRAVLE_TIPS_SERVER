@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable no-useless-escape */
 import bcryptjs from "bcryptjs";
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { USER_ROLE, USER_STATUS } from "./user-constant";
 import { TUser, TUserModel } from "./user-interface";
 import config from "../../app/config";
@@ -18,17 +18,7 @@ const userSchema = new Schema<TUser, TUserModel>(
       default: USER_ROLE.USER,
       required: true,
     },
-    followersCount: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
 
-    followingCount: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
     email: {
       type: String,
       required: true,
@@ -46,6 +36,17 @@ const userSchema = new Schema<TUser, TUserModel>(
     address: {
       type: String,
     },
+    follower: {
+      type: [Types.ObjectId],
+      ref: "User",  
+      default: [],
+    },
+    following: {
+      type: [Types.ObjectId],
+      ref: "User",  
+      default: [],
+    },
+
     status: {
       type: String,
       enum: Object.keys(USER_STATUS),

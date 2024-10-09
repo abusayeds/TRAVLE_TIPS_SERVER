@@ -21,20 +21,26 @@ const postSchema = new Schema<TPost>(
       type: String,
       required: true,
     },
-    upvoteCount: {
+    upvote: {
       type: Number,
       required: true,
       default: 0,
     },
-    downvoteCount: {
+    downvote: {
       type: Number,
       required: true,
       default: 0,
     },
+    totalVote : {
+        type : Number, 
+        required : true,
+        default: 0,
+    }, 
     images: {
       type: [String],
       default: [],
     },
+   
 
     comments: {
       type: [String],

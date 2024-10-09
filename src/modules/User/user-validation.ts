@@ -20,6 +20,10 @@ const createUserValidationSchema = z.object({
     followersCount: z.number().min(0).default(0),
     followingCount: z.number().min(0).default(0),
     address: z.string().optional(),
+
+    follower: z.array(z.string()).optional().default([]),
+
+    following: z.array(z.string()).optional().default([]),
     status: z.nativeEnum(USER_STATUS).default(USER_STATUS.ACTIVE),
     mobileNumber: z.string().optional(),
   }),
@@ -28,9 +32,12 @@ const createUserValidationSchema = z.object({
 const updateUserValidationSchema = z.object({
   body: z.object({
     name: z.string().optional(),
-    email: z.string().email({
-      message: "Invalid email",
-    }).optional(),
+    email: z
+      .string()
+      .email({
+        message: "Invalid email",
+      })
+      .optional(),
 
     followersCount: z.number().min(0).default(0).optional(),
     followingCount: z.number().min(0).default(0).optional(),

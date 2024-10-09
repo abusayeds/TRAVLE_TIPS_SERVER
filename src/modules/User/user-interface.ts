@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Model } from "mongoose";
+import { Model, Types } from "mongoose";
 import { USER_ROLE, USER_STATUS } from "./user-constant";
 
 export type TUser = {
@@ -9,8 +9,8 @@ export type TUser = {
   email: string;
   password: string;
   address?: string;
-  followersCount?: number,
-  followingCount?: number,
+  follower?: Types.ObjectId[];
+  following?: Types.ObjectId[];
   status: keyof typeof USER_STATUS;
   passwordChangedAt?: Date;
   mobileNumber?: string;
@@ -19,11 +19,11 @@ export type TUser = {
   createdAt?: Date;
   updatedAt?: Date;
 };
-export  interface TUserModel  extends Model<TUser> {
-    isUserExistsByEmail(id:string ) :Promise<TUser>
-    isPasswordMatched(
-        plainTextPassword: string,
-        hashedPassword: string
-      ): Promise<boolean>;
- }
- export type TuserRole = keyof typeof USER_ROLE
+export interface TUserModel extends Model<TUser> {
+  isUserExistsByEmail(id: string): Promise<TUser>;
+  isPasswordMatched(
+    plainTextPassword: string,
+    hashedPassword: string
+  ): Promise<boolean>;
+}
+export type TuserRole = keyof typeof USER_ROLE;
