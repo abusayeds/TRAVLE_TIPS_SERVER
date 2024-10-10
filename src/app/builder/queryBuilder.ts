@@ -8,23 +8,47 @@ class queryBuilder<T> {
     this.query = Query;
   }
 
-  // search method
-  search(searchableFields: string[]) {
-    // console.log(searchableFields);
+//   // search method
+//   search(searchableFields: string[]) {
+//     // console.log(searchableFields);
 
-    const searchTerm = this?.query?.searchTerm;
+//     const searchTerm = this?.query?.searchTerm;
+//     if (searchTerm) {
+//       this.modelQuery = this?.modelQuery?.find({
+//         $or: searchableFields.map(
+//           (field) =>
+//             ({
+//               [field]: { $regex: searchTerm, $options: "i" },
+//             }) as FilterQuery<T>
+//         ),
+//       });
+//     }
+//     return this;
+//   }
+
+search(searchableFields: string[]) {
+    const searchTerm = this.query?.searchTerm;
+  
     if (searchTerm) {
-      this.modelQuery = this?.modelQuery?.find({
-        $or: searchableFields.map(
-          (field) =>
-            ({
-              [field]: { $regex: searchTerm, $options: "i" },
-            }) as FilterQuery<T>
-        ),
+ 
+      const stringFields = searchableFields.filter(field => {
+        
+        return ['title', 'description', "userName" ].includes(field); // Example of known string fields
       });
+  
+      if (stringFields.length > 0) {
+        this.modelQuery = this.modelQuery.find({
+          $or: stringFields.map((field) => ({
+            [field]: { $regex: searchTerm, $options: 'i' },
+          })),
+        });
+      }
     }
+  
     return this;
   }
+  
+
 
   // fillter method
   fillter() {

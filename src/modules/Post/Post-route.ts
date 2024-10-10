@@ -28,17 +28,25 @@ router.get(
   auth(USER_ROLE.USER),
   postController.getSinglePost
 );
-router.put(
-  "/updata-post/:id",
-  auth(USER_ROLE.USER),
-  postController.updataPost
-);
+router.put("/updata-post/:id", auth(USER_ROLE.USER), postController.updataPost);
+router.put("/add-comment/:id", auth(USER_ROLE.USER), postController.addComment);
 router.delete(
   "/delete-post/:id",
   auth(USER_ROLE.USER),
   postController.deletePost
 );
+router.put(
+  "/edit-comment/:postId/:commentId",
+  auth(USER_ROLE.USER),
+  postController.editComment
+);
+router.delete(
+  "/delete-comment/:postId/:commentId",
+  auth(USER_ROLE.USER),
+  postController.deleteComment
+);
 router.get("/all-post", auth(USER_ROLE.USER), postController.getAllPost);
+router.get("/single-post/:id", auth(USER_ROLE.USER), postController.getAllPost);
 router.get("/my-post", auth(USER_ROLE.USER), postController.myPost);
 
 export const postRouts = router;

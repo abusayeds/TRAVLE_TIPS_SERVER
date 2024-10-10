@@ -90,6 +90,42 @@ const deletePost = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const addComment = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await postService.addCommentDB(id, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Comment successfully ! ",
+    data: result,
+  });
+});
+const editComment = catchAsync(async (req, res) => {
+    const postId = req.params.postId;
+    const commentId = req.params.commentId;
+    const userComment = req.body.userComment;
+  const result = await postService.editCommentDB(postId, commentId, userComment);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Edit Comment successfully ! ",
+    data: result,
+  });
+});
+const deleteComment = catchAsync(async (req, res) => {
+    const postId = req.params.postId;
+    const commentId = req.params.commentId;
+  const result = await postService.deleteCommentDB(postId, commentId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Deleted Comment successfully ! ",
+    data: result,
+  });
+});
 
 export const postController = {
   createPost,
@@ -100,4 +136,7 @@ export const postController = {
   getSinglePost,
   updataPost,
   deletePost,
+  addComment,
+  editComment, 
+  deleteComment,
 };
