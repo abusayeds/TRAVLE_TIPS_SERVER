@@ -40,7 +40,7 @@ const confirmationController = async (req: Request, res: Response) => {
 
 
 
-            <a href="http://localhost:3000/profile" style="text-decoration: none; background-color: #2d3748; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s;">
+            <a href="https://travel-tips-client-delta.vercel.app/profile" style="text-decoration: none; background-color: #2d3748; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s;">
               Back to Profile
             </a>
 
@@ -93,7 +93,7 @@ const failedController = async (req: Request, res: Response) => {
           <div style="display: flex; justify-content: center; margin-top: 16px;">
 
 
-            <a href="http://localhost:3000/profile" style="text-decoration: none; background-color: #2d3748; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s;">
+            <a href="https://travel-tips-client-delta.vercel.app/profile" style="text-decoration: none; background-color: #2d3748; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s;">
               Back to home 
             </a>
 
