@@ -11,13 +11,13 @@ const router = Router();
 
 router.post(
   "/create-flow",
-  auth(USER_ROLE.USER),
+  auth(USER_ROLE.USER || USER_ROLE.ADMIN),
 //   requestValidation(flowValidation.crateFlowValidation),
   flowcontroller.createFlow
 );
 router.post(
   "/un-flow",
-  auth(USER_ROLE.USER),
+  auth(USER_ROLE.USER || USER_ROLE.ADMIN),
 //   requestValidation(flowValidation.crateFlowValidation),
   flowcontroller.unFlow
 );

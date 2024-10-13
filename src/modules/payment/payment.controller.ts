@@ -33,7 +33,7 @@ const confirmationController = async (req: Request, res: Response) => {
                 d="M256 0C114.84 0 0 114.84 0 256s114.84 256 256 256 256-114.84 256-256S397.16 0 256 0zm0 470.487c-118.265 0-214.487-96.214-214.487-214.487 0-118.265 96.221-214.487 214.487-214.487 118.272 0 214.487 96.221 214.487 214.487 0 118.272-96.215 214.487-214.487 214.487z"
                 data-original="#000000" />
             </svg>
-            <h4 style="font-size:1.25rem;color:#2d3748;font-weight:600;margin-top:16px;">Order Successfully accepted!</h4>
+            <h4 style="font-size:1.25rem;color:#2d3748;font-weight:600;margin-top:16px;">Payment Successfully completed!</h4>
             <p style="font-size:0.875rem;color:#718096;margin-top:16px;">Your order is completely successful and thank you for the next one </p>
           </div>
           <div style="display: flex; justify-content: center; margin-top: 16px;">
@@ -41,7 +41,7 @@ const confirmationController = async (req: Request, res: Response) => {
 
 
             <a href="http://localhost:3000/profile" style="text-decoration: none; background-color: #2d3748; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s;">
-              Back to home 
+              Back to Profile
             </a>
 
 

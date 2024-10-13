@@ -25,11 +25,19 @@ router.put(
 );
 router.get(
   "/single-post/:id",
-  auth(USER_ROLE.USER),
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
   postController.getSinglePost
 );
-router.put("/updata-post/:id", auth(USER_ROLE.USER), postController.updataPost);
-router.put("/add-comment/:id", auth(USER_ROLE.USER), postController.addComment);
+router.put(
+  "/updata-post/:id",
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
+  postController.updataPost
+);
+router.put(
+  "/add-comment/:id",
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
+  postController.addComment
+);
 router.delete(
   "/delete-post/:id",
   auth(USER_ROLE.USER),
@@ -45,8 +53,16 @@ router.delete(
   auth(USER_ROLE.USER),
   postController.deleteComment
 );
-router.get("/all-post", auth(USER_ROLE.USER), postController.getAllPost);
-router.get("/single-post/:id", auth(USER_ROLE.USER), postController.getAllPost);
+router.get(
+  "/all-post",
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
+  postController.getAllPost
+);
+router.get(
+  "/single-post/:id",
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
+  postController.getAllPost
+);
 router.get("/my-post", auth(USER_ROLE.USER), postController.myPost);
 
 export const postRouts = router;

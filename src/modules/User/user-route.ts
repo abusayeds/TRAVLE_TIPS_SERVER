@@ -20,14 +20,16 @@ router.post(
 );
 router.put(
   "/update-user/:userId",
-  auth(USER_ROLE.USER),
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
   requestValidation(UserValidation.updateUserValidationSchema),
   userController.updateUser
 );
 router.get(
   "/single-user/:userId",
-  auth(USER_ROLE.USER),
+  auth(USER_ROLE.USER, USER_ROLE.ADMIN),
   userController.getSingleUser
 );
+router.get("/single-email-user/:email", userController.getSingleEmailUser);
+router.get("/all-user", auth(USER_ROLE.ADMIN), userController.getAllUser);
 
 export const userRoutes = router;

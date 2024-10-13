@@ -31,19 +31,18 @@ const userSchema = new Schema<TUser, TUserModel>(
     password: {
       type: String,
       required: true,
-      select: 0,
     },
     address: {
       type: String,
     },
     follower: {
       type: [Types.ObjectId],
-      ref: "User",  
+      ref: "User",
       default: [],
     },
     following: {
       type: [Types.ObjectId],
-      ref: "User",  
+      ref: "User",
       default: [],
     },
 
@@ -66,6 +65,14 @@ const userSchema = new Schema<TUser, TUserModel>(
     coverPhoto: {
       type: String,
       default: null,
+    },
+    resetCode: {
+      type: String,
+      default: "1234",
+    },
+    resetCodeExpires: {
+      type: Date,
+      default: Date.now(),
     },
   },
   {

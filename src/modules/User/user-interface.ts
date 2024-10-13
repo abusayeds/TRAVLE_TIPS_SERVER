@@ -16,6 +16,8 @@ export type TUser = {
   mobileNumber?: string;
   profilePhoto?: string;
   coverPhoto?: string;
+  resetCode: string;
+  resetCodeExpires: Date;
   createdAt?: Date;
   updatedAt?: Date;
 };
