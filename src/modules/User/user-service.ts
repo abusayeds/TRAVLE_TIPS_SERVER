@@ -10,6 +10,11 @@ const getSingleUserDB = async (userId: string) => {
 
   return result;
 };
+const deleteUserDB = async (userId: string) => {
+  const result = await UserModel.findByIdAndDelete(userId);
+
+  return result;
+};
 const getSingleEmailUserDB = async (email: string) => {
   const result = await UserModel.findOne({ email: email })
     .populate("follower", "name email status profilePhoto mobileNumber ")
@@ -43,4 +48,5 @@ export const UserServices = {
   updateUserDB,
   getAllUserDB,
   getSingleEmailUserDB,
+  deleteUserDB,
 };

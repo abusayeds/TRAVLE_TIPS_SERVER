@@ -29,6 +29,11 @@ router.get(
   auth(USER_ROLE.USER, USER_ROLE.ADMIN),
   userController.getSingleUser
 );
+router.delete(
+  "/delete-user/:userId",
+  auth(USER_ROLE.ADMIN),
+  userController.deleteUser
+);
 router.get("/single-email-user/:email", userController.getSingleEmailUser);
 router.get("/all-user", auth(USER_ROLE.ADMIN), userController.getAllUser);
 

@@ -10,7 +10,7 @@ const payment = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: " paymeny  successfully ! ",
+    message: "payment successfully ! ",
     data: result,
   });
 });
